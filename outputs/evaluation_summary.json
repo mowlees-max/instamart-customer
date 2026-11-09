@@ -1,0 +1,149 @@
+{
+  "zero_shot": {
+    "classified": 147,
+    "accuracy": 0.8571428571428571,
+    "tokens": 7372,
+    "tokens_per_classified": 50.14965986394558,
+    "confusion": {
+      "billing": {
+        "billing": 38,
+        "delivery": 0,
+        "fraud": 11,
+        "technical": 10
+      },
+      "delivery": {
+        "billing": 0,
+        "delivery": 36,
+        "fraud": 0,
+        "technical": 0
+      },
+      "fraud": {
+        "billing": 0,
+        "delivery": 0,
+        "fraud": 23,
+        "technical": 0
+      },
+      "technical": {
+        "billing": 0,
+        "delivery": 0,
+        "fraud": 0,
+        "technical": 29
+      }
+    }
+  },
+  "zero_shot_budget": {
+    "budget": 6000,
+    "budget_exhausted": 29,
+    "status_counts": {
+      "classified_json": 111,
+      "budget_exhausted": 29,
+      "classified_keyword": 9,
+      "flagged_invalid_output": 7,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    }
+  },
+  "few_shot": {
+    "tokens": 12520,
+    "redactions": {
+      "email": 55,
+      "phone": 91,
+      "order_id": 132
+    },
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "flagged_long": 4,
+      "skipped_empty": 4
+    }
+  },
+  "rag_overlap": {
+    "chunks": 15,
+    "doc_hits": 12,
+    "fact_hits": 12,
+    "fallbacks": 2
+  },
+  "rag_no_overlap": {
+    "chunks": 13,
+    "doc_hits": 12,
+    "fact_hits": 10,
+    "fallbacks": 2,
+    "failures": [
+      "What delivery time makes a completed order eligible for a full refund?",
+      "How soon is money returned when a payment fails but is deducted?"
+    ]
+  },
+  "agent_scenarios": [
+    {
+      "scenario_id": "S1",
+      "status": "REFUND",
+      "refund_inr": 128.25,
+      "llm_calls": 5,
+      "tokens_used": 897
+    },
+    {
+      "scenario_id": "S2",
+      "status": "REFUND",
+      "refund_inr": 135.0,
+      "llm_calls": 5,
+      "tokens_used": 897
+    },
+    {
+      "scenario_id": "S3",
+      "status": "ESCALATE",
+      "refund_inr": 1999.0,
+      "llm_calls": 5,
+      "tokens_used": 884
+    },
+    {
+      "scenario_id": "S4",
+      "status": "DENIED",
+      "refund_inr": 0.0,
+      "llm_calls": 4,
+      "tokens_used": 605
+    },
+    {
+      "scenario_id": "S5",
+      "status": "DENIED",
+      "refund_inr": 0,
+      "llm_calls": 3,
+      "tokens_used": 337
+    },
+    {
+      "scenario_id": "S6",
+      "status": "NOT_FOUND",
+      "refund_inr": 0,
+      "llm_calls": 2,
+      "tokens_used": 72
+    },
+    {
+      "scenario_id": "S7",
+      "status": "FALLBACK_MAX_ITERATIONS",
+      "refund_inr": 0,
+      "llm_calls": 6,
+      "tokens_used": 3000
+    }
+  ],
+  "token_demo": {
+    "status": "FALLBACK_TOKEN_LIMIT",
+    "llm_calls": 3,
+    "tokens_used": 354
+  },
+  "time_demo": {
+    "status": "FALLBACK_TIMEOUT",
+    "llm_calls": 0,
+    "tokens_used": 0
+  },
+  "crash_resume": {
+    "status": "REFUND",
+    "refund_inr": 128.25,
+    "tools": [
+      "get_order",
+      "search_policy",
+      "calculate_refund",
+      "issue_refund"
+    ],
+    "llm_calls": 5
+  }
+}
